@@ -1,4 +1,6 @@
 import { AfterInsert, AfterRemove, AfterUpdate, Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { ASYNC_METHOD_SUFFIX } from '@nestjs/common/module-utils/constants';
 
 @Entity()
 export class User {

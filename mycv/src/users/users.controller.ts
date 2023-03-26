@@ -2,8 +2,12 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Query, NotFoundExcep
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
+import { UserDto } from './dtos/user.dto';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
+@Serialize(UserDto)
 export class UsersController {
 	constructor(private usersService: UsersService) {}
 
@@ -15,6 +19,10 @@ export class UsersController {
 	@Get('/:id')
 	async findUser(@Param('id') id: string) {
 		const user = await this.usersService.findOne(parseInt(id));
+		// TODO: 여기서 user의 자료형(?)이 무엇인가?
+		// console.log("this log: " + user);
+		// console.log("this log: " + user.id);
+		// console.log("this log: " + user.email);
 		if (!user) {
 			throw new NotFoundException('user not found');
 		}
