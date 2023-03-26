@@ -1,10 +1,10 @@
 ### Create a new user
-POST http://localhost:3000/auth/signup
+POST http://localhost:3000/auth/signin
 content-type: application/json 
 
 {
-	"email": "ydh3579@naver.com",
-	"password": "asdf"
+	"email": "ydh35791234@naver.com",
+	"password": "asdf1234"
 }
 
 ### Find a particular user with a given Id
