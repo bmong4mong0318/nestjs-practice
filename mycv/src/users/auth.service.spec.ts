@@ -10,6 +10,8 @@ it('can create an instance of auth service', async () => {
 			Promise.resolve({ id: 1, email, password }),
 	};
 
+	const arr = await fakeUserService.find();
+
 	const module = await Test.createTestingModule({
 		providers: [
 			AuthService,
