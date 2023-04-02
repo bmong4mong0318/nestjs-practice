@@ -5,6 +5,8 @@ import {
   UseGuards,
   Param,
   Patch,
+  Get,
+  Query,
 } from '@nestjs/common';
 import { CreateReportDto } from './dtos/create-report.dto';
 import { ReportsService } from './reports.service';
@@ -15,10 +17,16 @@ import { ReportDto } from './dtos/report.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { ApproveReportDto } from './dtos/appove-report.dto';
 import { AdminGuard } from '../guards/admin.guard';
+import { GetEstimateDto } from './dtos/get-estimate.dto';
 
 @Controller('reports')
 export class ReportsController {
   constructor(private reportsService: ReportsService) {}
+
+  @Get()
+  getEstimateDto(@Query() query: GetEstimateDto) {
+    console.log(query);
+  }
 
   @Post()
   // only authenticated users can access this endpoint
